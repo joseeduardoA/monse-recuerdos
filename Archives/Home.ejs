@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gracias Por Mucho Morenita Hermosha</title>
+  <link rel="stylesheet"
+      href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn-icons-png.flaticon.com%2F512%2F1077%2F1077086.png&f=1&nofb=1&ipt=c03a8c7bd5014134fc88dc49daa10601fecc88f09a367421fae6002c72c61484">
+
+  <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    --Base:  #1e1e2e ;
+    --Primario: #4b4b63;
+    --Secundario: #7b7b9d;
+    --terceario: #fdfdfd;
+}
+
+    body{background-color: var(--Secundario);}
+
+    .LisView{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+        gap: 10px;
+        padding: 10px;
+
+    }
+
+    .Content_view{
+        padding: 20px;
+        background-color: var(--terceario);
+        color: var(--Base);
+        text-align:center;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        filter: saturate(100%);
+        position: relative;
+    }
+
+    .Content_view .icons{
+        position: absolute;
+        top: 0px;
+        right:0px;
+        width: 70px;
+        z-index: 10;
+    }
+
+    .Content_view img{
+        width: 100%; 
+         transition: filter 0.5s linear;
+    }
+
+    .Content_view:hover img{
+    filter: saturate(200%) contrast(1.1) brightness(121%);
+}
+    .Content_view p{
+        font-style: oblique;
+}
+
+    .Content_view .Description-Event{
+        text-align:justify;
+    }
+
+    @media screen and (max-width:360px) {
+        .LisView{
+            grid-template-columns: 1fr;
+        }
+        
+    }
+.Create_nOte{
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    max-height: 600px;
+    gap: 10px;
+    padding: 30px;
+    background-color: color-mix(in srgb, var(--Primario) 80%, var(--terceario) 20%);
+    border-radius: 10px;
+    border: var(--Base) 5px solid;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    display: none;
+    overflow: scroll;
+    scrollbar-width: none;
+    }
+
+
+    .Create_nOte img{
+        width: 200px;
+        margin: auto;
+        border-radius: 10px;
+        }
+
+    
+    .Create_nOte input{
+        width: 100%;
+        height: 40px;
+        padding: 5px;
+    }
+
+    .Create_nOte textarea, .Create_nOte input{
+        background-color: var(--terceario);
+        border: 0;
+        color: var(--Base);
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        border-radius: 10px;
+    }
+    .Create_nOte textarea::placeholder, .Create_nOte input::placeholder{
+        color: var(--Base);
+    }
+
+    .Create_nOte input[type ="submit"], .Create_nOte input[type ="date"]{
+        width: 100%;
+        max-width: 200px;
+        margin: auto;
+    }
+
+    .Create_nOte input[type ="submit"]{
+        color: var(--terceario);
+        background-color: var(--Base);
+    }
+    .Create_nOte textarea{
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    padding: 5px;
+   
+    }
+
+    
+
+    .Extit{
+        position:fixed;
+        right: 10px;
+        top: 10px;
+        padding: 10px;
+        background-color: var(--Base);
+        color: var(--terceario);
+        border: 0;
+    }
+    
+
+    @media screen and (max-width: 700px) {
+        .Create_nOte{
+        width: 100%;
+        }
+        
+    }
+
+
+    h1{
+        background-color: var();
+    }
+.Title{
+        width: 100%;
+        background-color: var(--Base);
+        color: var(--terceario);
+        position: sticky;
+        top: 0;
+        text-align: center;
+        z-index: 5;
+        padding: 20px;
+    }
+
+    .event{
+        cursor:pointer;
+        font-style: italic;
+        font-size: 18px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="Title">
+    <h1>Porque contigo todo tiene sentido ❤</h1>
+
+    <h3 class="event">✛ Crear un nuevo recuerdo al hacer clic aqui </h3>
+  </div>
+
+  <!-- ===================== -->
+<!-- EVENTOS DESDE SQLITE -->
+<!-- ===================== -->
+<div class="LisView">
+  <% if (eventos.length === 0) { %>
+    <p>No hay recuerdos aún 💭</p>
+    <br>
+    <strong>pero podemos empezar a crearlos juntos 💕</strong>
+  <% } %>
+
+  <% eventos.forEach(e => { %>
+    <div class="Content_view">
+        <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fassets.stickpng.com%2Fthumbs%2F58485538b772315a9e4dd5d9.png&f=1&nofb=1&ipt=dc7c200a245871d577ad6f5f071631fb67075ee9040e6210274119b5bdc60eaa" class="icons">
+      <% if (e.imagen_url) { %>
+        <img src="<%= e.imagen_url %>">
+      <% } %>
+
+      <h2><%= e.titulo %></h2>
+      <p class="Description-Event"><%= e.descripcion %></p>
+      <p>
+  <%= new Date(e.fecha).toLocaleDateString('es-MX', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      }) %>
+</p>
+    </div>
+  <% }) %>
+</div>
+
+
+  <form class="Create_nOte"
+      method="POST"
+      action="/eventos"
+      enctype="multipart/form-data">
+      <button class="Extit">X</button>
+
+    <input type="file" id="imagenInput" name="imagen" accept="image/*" hidden required>
+
+    <img id="preview"
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F016%2F017%2F372%2Foriginal%2Fimage-upload-free-png.png&f=1&nofb=1&ipt=351ec90aacc75779ea26a83bf4f3e06244d6ce699931fe52f5a9a609a45dfd70"
+        alt="Subir imagen"
+        style="cursor:pointer;">
+
+
+    <input type="text" name="titulo" placeholder="¿Cómo llamarías a este momento?" required>
+    <textarea name="descripcion" placeholder="Cuéntame qué hizo este día especial…"></textarea>
+    <input type="date" name="fecha" required>
+    <input type="submit" value="Guardar recuerdo ❣">
+    <p style="text-align:center; font-size:12px; opacity:0.8;">
+  Hecho con cariño, solo para ti 💌
+</p>
+
+<script>
+    const action = document.querySelector(".event");
+    const form = document.querySelector(".Create_nOte");
+    const Ext = document.querySelector(".Extit");
+    const input = document.getElementById("imagenInput");
+    const preview = document.getElementById("preview");
+
+    action.addEventListener("click", () => {
+        form.style.display = "grid";
+    });
+
+    Ext.addEventListener("click", (e) => {
+        form.style.display = "none";
+        e.preventDefault(); // IMPORTANTE
+        form.style.display = "none";
+        preview.src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F016%2F017%2F372%2Foriginal%2Fimage-upload-free-png.png";
+        input.value = "";
+    });
+
+    preview.addEventListener("click", () => {
+        input.click();
+    });
+
+    input.addEventListener("change", () => {
+        const file = input.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = e => preview.src = e.target.result;
+        reader.readAsDataURL(file);
+    });
+
+</script>
+</body>
+</html>
+
+
