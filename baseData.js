@@ -2,9 +2,14 @@ const express = require("express");
 const sqlite3 = require("sqlite3").verbose();
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
 
 // ====================
 // MIDDLEWARES
