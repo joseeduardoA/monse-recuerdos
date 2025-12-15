@@ -53,6 +53,8 @@
 
     .Content_view img{
         width: 100%; 
+        max-height: 200px;
+        object-fit: contain;
          transition: filter 0.5s linear;
     }
 
@@ -192,9 +194,8 @@
 <!-- ===================== -->
 <div class="LisView">
   <% if (eventos.length === 0) { %>
-    <p>No hay recuerdos aún 💭</p>
-    <br>
-    <strong>pero podemos empezar a crearlos juntos 💕</strong>
+    <p>No hay recuerdos aún 💭 <strong>pero podemos empezar a crearlos juntos 💕</strong></p>
+
   <% } %>
 
   <% eventos.forEach(e => { %>
