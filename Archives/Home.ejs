@@ -53,7 +53,7 @@
 
     .Content_view img{
         width: 100%; 
-        max-height: 200px;
+
         object-fit: contain;
          transition: filter 0.5s linear;
     }
@@ -73,6 +73,11 @@
         .LisView{
             grid-template-columns: 1fr;
         }
+        
+    }
+    @media screen and (min-width:630px) {
+        .Content_view img{
+        max-height: 200px;}
         
     }
 .Create_nOte{
